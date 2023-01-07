@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brother Bakery Main</title>
+    <link rel="stylesheet" href="static/css/mainstyle.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  </head>
+
+  <body>
+    <main>
+      <div class="big-wrapper light">
+        <img src="./img/shape.png" alt="" class="shape" />
+
+        <header>
+          <div class="container">
+            <div class="logo">
+<!--              <img src="static/css/topimg.jpg" alt="Logo" />-->
+              <h3>Brother Bakery</h3>
+            </div>
+
+            <div class="links">
+              <ul>
+                <li><a href="{{url_for('invoices')}}">הפקת קבלה</a></li>
+                <li><a href="{{url_for('manage')}}" >ניהול הזמנות</a></li>
+                <li><a href="{{url_for('new_order')}}">יצירת הזמנה</a></li>
+                <li ><a href="{{url_for('main')}}" >יציאה</a></li>
+
+              </ul>
+            </div>
+
+            <div class="overlay"></div>
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="showcase-area">
+          <div class="container">
+            <div class="left">
+              <div class="big-title">
+                <h1>Brother Bakery,</h1>
+                <h1>inventory.</h1>
+              </div>
+              <p class="text">
+                Inventory management interface for bakeries that distribute products to various businesses.
+              </p>
+              <div class="cta" style="display: flex; justify-content:right">
+                <a href="{{url_for('new_order')}}"  class="btn">יצירת הזמנה</a>
+              </div>
+            </div>
+
+            <div class="right">
+              <img src="static/css/front.png" alt="Person Image" class="person"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-area">
+          <div class="container">
+            <button class="toggle-btn">
+              <i class="far fa-moon"></i>
+              <i class="far fa-sun"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- JavaScript Files -->
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="static/js/mainjs.js"></script>
+  </body>
+</html>

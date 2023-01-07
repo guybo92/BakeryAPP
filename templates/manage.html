@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Brother Bakery New Order</title>
+<!--Icons delete and edit-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!--    ??-->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!--    positioning right and left-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+<!--  sort + search + show entries -->
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--  sort + search + show entries -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<!--      next+prev-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+
+    <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+    <!--      My styles -->
+
+    <link rel="stylesheet" href="static/css/mainstyle.css" />
+
+  </head>
+
+  <style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
+
+  <body>
+
+<!--  <form method="POST" autocomplete="off">-->
+    <main>
+
+      <div class="big-wrapper light">
+        <img src="./img/shape.png" alt="" class="shape" />
+
+        <header>
+          <div class="container" style="max-width: 1320px;">
+            <div class="logo">
+<!--              <img src="static/css/topimg.jpg" alt="Logo" />-->
+              <h3><a class="link_black" href="{{url_for('welcome_page')}}">Brother Bakery </a></h3>
+            </div>
+
+            <div class="links">
+              <ul>
+                <li><a href="{{url_for('invoices')}}">הפקת קבלה</a></li>
+                <li><a href="{{url_for('manage')}}" >ניהול הזמנות</a></li>
+                <li><a href="{{url_for('new_order')}}">יצירת הזמנה</a></li>
+                <li ><a href="{{url_for('main')}}" >יציאה</a></li>
+
+              </ul>
+            </div>
+
+            <div class="overlay"></div>
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+
+        </header>
+
+
+<!--<div style="margin: 0px 0px;">-->
+    {% block content %}
+<table id="data" class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>לקוח</th>
+      <th>תאריך</th>
+      <th>סה"כ</th>
+      <th>פעולות</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for row in manage_viewer %}
+    <tr>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+                            <td>
+    <a href="/edit/{{ row[0] }}" style="color:#45424B" class="edit" title="Edit" data-toggle="modal"
+       data-target="#modaledit{{ row[0] }}"><i class="material-icons">&#xE254;</i></a>
+    <a href="/delete_order/{{ row[0] }}" onclick="return confirm('אתה בטוח שאתה רוצה למחוק את ההזמנה?')"
+       style="color:#45424B" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                    </td>
+
+    </tr>
+        {% endfor %}
+</tbody>
+</table>
+{% endblock %}
+
+
+<!--</div>-->
+
+    <div style = "display: grid; justify-content:center;">
+        <input class="btn" type="button" value="חזור" onclick="location.href='welcome';"
+               style="font-size:20px; padding: 0.1rem 0.5rem;">
+    </div>
+
+
+                <div class="showcase-area">
+          <div class="container">
+            <div class="left">
+          </div>
+        </div>
+        </div>
+
+        <div class="bottom-area">
+          <div class="container">
+            <button class="toggle-btn" disabled>
+              <i class="far fa-moon"></i>
+              <i class="far fa-sun"></i>
+            </button>
+          </div>
+        </div>
+    </div>
+
+
+    </main>
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="static/js/mainjs.js"></script>
+<!--      </form>-->
+  </body>
+  <script>
+document.getElementById('book_date').value = new Date().toISOString().slice(0, 10);
+</script>
+
+    <script>
+        function fun(){
+        document.querySelectorAll('.inputcenter').forEach(e => e.remove());
+            }
+    </script>
+
+
+<script>
+// Basic example
+$(document).ready(function () {
+  $('#dtBasicExample').DataTable({
+    "pagingType": "simple" // "simple" option for 'Previous' and 'Next' buttons only
+  });
+  $('.dataTables_length').addClass('bs-select');
+});
+</script>
+
+<!--<script>-->
+<!--    // Basic example-->
+<!--$(document).ready(function () {-->
+<!--  $('#dtBasicExample').DataTable({-->
+<!--    "paging": false // false to disable pagination (or any other option)-->
+<!--  });-->
+<!--  $('.dataTables_length').addClass('bs-select');-->
+<!--});-->
+<!--</script>-->
+
+  <script>
+    // Initialize the DataTable
+    $(document).ready(function () {
+      $('#data').DataTable({
+        // Set the number of rows to be
+        // displayed per page on the DataTable
+        pageLength: 8,
+        lengthMenu: [[8, 15, 30, -1], [8, 15, 30, 'All']],
+      });
+    });
+  </script>
+
+
+
+</html>
+
+

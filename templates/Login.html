@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Brother Bakery</title>
+</head>
+
+<body>
+    <section class="side">
+        <img src="static/css/pack.png" alt="">
+    </section>
+    <section class="main">
+        <div class="login-container">
+                <topicon>
+                    <img src="static/css/topimg.jpg" alt="">
+                </topicon>
+            <p class="title">Brother Bakery</p>
+            <div class="separator"></div>
+
+<!--action="/welcome"-->
+            <form class="login-form" method="POST" name="form" action="/">
+                <div class="form-control">
+                    <input type="text" placeholder="Username" required id="user" name="user_name">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-control">
+                    <input type="password" placeholder="Password" required id="pass" name="password">
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                    <div class="errordisplay" id="user_error">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+
+                <div class="clearfix">
+			            <a href="#">Forgot Password?</a>
+                </div>
+                    <button type="submit" class="submit">Login</button>
+            </form>
+
+        </div>
+    </section>
+<!--<script src="static/js/mainjs.js"></script>-->
+
+
+<!--<script>-->
+<!--    function validation(){-->
+<!--    var username = document.forms['form']['user_name'];-->
+<!--    var password = document.forms['form']['pass'];-->
+<!--    var wronguser = document.getElementById('user_error');-->
+
+<!--    if(username.value != "Idan" || password.value != "123"){-->
+<!--        wronguser.style.display = "block";-->
+<!--        wronguser.focus();-->
+<!--    }-->
+<!--}-->
+
+
+
+<!--</script>-->
+
+</body>
+
+</html>
+
+
+<!--<body>-->
+<!--<div class="erormessages">-->
+
+<!--    {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--    {% if messages %}-->
+<!--    alert("")-->
+<!--    {% for category,msg in messages %}-->
+<!--    {% if category == 'error'%}-->
+<!--        <div style="position: absolute; left: 42%;" id="msg" role="alert">{{msg}}</div>-->
+<!--    {% endif %}-->
+<!--    {% endfor %}-->
+<!--    {% endif %}-->
+<!--    {% endwith %}-->
+<!--</div>-->

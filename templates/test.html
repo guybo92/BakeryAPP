@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <title>Brother Bakery New Order</title>
+    <link rel="stylesheet" href="static/css/mainstyle.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  </head>
+
+    <style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 0px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
+
+
+  <body>
+    <form method="POST" autocomplete="off">
+
+    <main>
+      <div class="big-wrapper light">
+        <img src="./img/shape.png" alt="" class="shape" />
+
+        <header>
+
+
+          <div class="container">
+            <div class="logo">
+<!--              <img src="static/css/topimg.jpg" alt="Logo" />-->
+              <h3>Brother Bakery</h3>
+            </div>
+
+            <div class="links">
+              <ul>
+                <li><a href="#">הפקת קבלה</a></li>
+                <li><a href="{{url_for('manage')}}" >ניהול הזמנות</a></li>
+                <li><a href="{{url_for('new_order')}}">יצירת הזמנה</a></li>
+                <li ><a href="{{url_for('main')}}" >יציאה</a></li>
+
+              </ul>
+            </div>
+
+            <div class="overlay"></div>
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </header>
+
+                                <div class="customerlist">
+            <select name= 'customer' class="list" required>
+                <option value="" SELECTED disabled hidden>בחר לקוח</option>
+                {% for customer in customer %}
+                <option value="{{ customer }}"> {{ customer }}</option>
+                {% endfor %}
+            </select>
+              <input class="form-control" type="date" name="book_date" id="book_date" required/>
+<!--              <h1 style="text-align: center; color:var(&#45;&#45;darkTwo);" >הזמנה</h1>-->
+          </div>
+
+
+<table id="table" class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>מוצר</th>
+      <th>מחיר ליחידה</th>
+      <th>כמות</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for row in product_list %}
+    <tr>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td style="width:30%"><input class="inputcenter" size="5" id="{{ row[0] }}" name="{{ row[1] }}"></td>
+    </tr>
+          {% endfor %}
+  </tbody>
+
+
+</table>
+
+               <div style = "display: flex; justify-content:center">
+                    <input  id="create_order" aria-pressed="true"
+                             class="btn" type="submit" value="צור הזמנה" style="font-size:25px; padding: 0.1rem 0.5rem;" >
+               </div>
+
+
+        <div class="showcase-area">
+          <div class="container">
+            <div class="left">
+          </div>
+        </div>
+
+        <div class="bottom-area">
+          <div class="container">
+            <button class="toggle-btn">
+              <i class="far fa-moon"></i>
+              <i class="far fa-sun"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </main>
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="static/js/mainjs.js"></script>
+        </form>
+  </body>
+
+
+  <script>
+document.getElementById('book_date').value = new Date().toISOString().slice(0, 10);
+</script>
+
+    <script>
+        function fun(){
+        document.querySelectorAll('.inputcenter').forEach(e => e.remove());
+            }
+    </script>
+
+
+<script>
+const elementftp = document.getElementById("create_order");
+elementftp.addEventListener("click", create_order);
+
+function create_order(){
+var all = document.querySelectorAll(".inputcenter");
+var supplied = 0;
+for(var i = 0;i < all.length;i++){
+    var input = all[i];
+    if(input.value.length > 0)
+    {
+        //get the value by "input.value"
+        supplied++;
+    }
+}
+
+if(supplied < 1){
+alert("You must input at least one product");
+}else{
+     }
+}
+
+</script>
+
+</html>
