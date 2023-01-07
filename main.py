@@ -153,17 +153,3 @@ def edit(id):
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host="0.0.0.0")
-
-
-
-# cur.execute(add_to_db, (max_id + 1, selected_customer, order_date, product[str(key_list[0])],
-#                         product[str(key_list[1])], product[str(key_list[2])], product[str(key_list[3])],
-#                         product[str(key_list[4])], product[str(key_list[5])], product[str(key_list[6])]))
-
-
-#  https://tutorial101.blogspot.com/2020/02/python-flask-datatable-using-sqlalchemy.html - edit
-# https://www.youtube.com/watch?v=I0Zu-Jtp898&t=302s - edit
-
-# https://www.youtube.com/watch?v=z3109C_xDP8&t=824s - edit good guide
-
-# check again maybe..https://www.youtube.com/watch?v=galc9j2Q4FA&t=243s
