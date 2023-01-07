@@ -155,6 +155,7 @@ if __name__ == '__main__':
     app.run(debug=True, port=8080, host="0.0.0.0")
 
 
+
 # cur.execute(add_to_db, (max_id + 1, selected_customer, order_date, product[str(key_list[0])],
 #                         product[str(key_list[1])], product[str(key_list[2])], product[str(key_list[3])],
 #                         product[str(key_list[4])], product[str(key_list[5])], product[str(key_list[6])]))
